@@ -1,0 +1,82 @@
+a = 1.12;
+b = 2.09;
+c = a * b;
+printf "%g\n" c;
+
+# Take two floats
+# Learn how many decimal places they have.
+# Learn which dedimal place is smaller
+# Multiply them together
+# Return a decimal rounded to smaller decimal place.
+
+# Take two floats
+# Must be done via a list. (wrong!)
+fun m list = {
+  one = list::nth ( list, 0 );
+  two = list::nth ( list, 1 );
+  printf "%g\n" one;
+  printf "%g\n" two;
+  one * two;
+};
+
+a = 1.12;
+b = 2.09;
+list = [ a, b ];
+result = m( list );
+printf "%g\n" result;
+
+fun m( list ) = {
+  one = list::nth( list, 0 );
+  two = list::nth( list, 1 );
+  # Why does this have to exist for the function to work?
+  tmp = one + 0.0;
+  one * two;
+};
+a = 1.12;
+b = 2.09;
+list = [ a, b ];
+result = m( list );
+printf "%g\n--\n" result;
+
+{
+fun m( list ) = {
+  one = list::nth( list, 0 );
+  two = list::nth( list, 1 );
+  one * two;
+};
+a = 1.12;
+b = 2.09;
+list = [ a, b ];
+result = m( list );
+printf "%g\n--\n" result;
+};
+
+fun m (a,b): Float = a * b;
+result = m( 1.12, 2.09 );
+printf "%g\n--\n" result;
+
+
+
+
+
+# This wouldn't work:
+fun m( list ) = {
+  list::nth( list, 0 ) * list::nth( list, 1 );
+};
+a = 1.12;
+b = 2.09;
+list = [ a, b ];
+result = m( list );
+printf "%g\n--\n" result;
+# But braces fixes it!
+
+{
+fun m( list ) = {
+  list::nth( list, 0 ) * list::nth( list, 1 );
+};
+a = 1.12;
+b = 2.09;
+list = [ a, b ];
+result = m( list );
+printf "%g\n--\n" result;
+};
