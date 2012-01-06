@@ -1,0 +1,203 @@
+#!/usr/bin/mythryl
+
+# I got stuck with multiple arguments.
+
+{
+# --
+# -- Ints OOP
+# --
+
+fun o_int  ( int: Int )
+    =
+    {
+      fun to_string  ():  String
+          =
+          {
+            int::to_string( int );
+          };
+
+      { to_string };
+    };
+
+
+fun test_to_string( my_int ):  Void
+    =
+    {
+      my_int =  10;
+
+      result =  int::to_string( my_int );
+      printf "%s\n" ( result );
+
+      oo =  o_int( my_int );
+      result =  oo.to_string();
+      printf "OOP:  %s\n" ( result );
+      
+    };
+# test_to_string( 10 );
+
+
+# --
+# -- Strings OOP
+# --
+
+fun o_string  ( string: String )
+    =
+    {
+      fun to_lower  (): String
+          =
+          {
+            string::to_lower( string );
+          };
+
+      fun length  (): Int
+          =
+          {
+            string::length( string );
+          };
+
+      fun contains  ( char: Char ): Bool
+          =
+          {
+            # Curious how this does not work if typed as:
+            # char::contains( string char );
+            char::contains string char;
+          };
+
+      # Return record of functions.
+      { to_lower, length, contains };
+    };
+
+
+
+fun test_to_lower  (): Void
+    =
+    {
+      my_string =  "MAKE THIS LOWERCASE";
+
+      result =  string::to_lower( my_string );
+      printf "%s\n" ( result );
+
+      oo =  o_string( my_string );
+      result =  oo.to_lower();
+      printf "OOP:  %s\n" ( result );
+    };
+# test_to_lower();
+
+
+fun test_length  (): Void
+    =
+    {
+      my_string =  "1234567890";
+
+      printf "%d\n" ( string::length( my_string ) );
+
+      oo =  o_string( my_string );
+      result =  oo.length();
+      printf "OOP:  %d\n" ( result );
+    };
+# test_length();
+
+
+fun test_contains  (): Void
+    =
+    {
+      my_string = "this is a test";
+
+      # Notice how this has the character 't' (single-quotes)
+      #    and not a string-of-length-one "t" (double-quotes)
+      if ( char::contains my_string 't' )
+        printf "'%s' contains 't'.\n" ( my_string );
+      fi;
+
+      oo =  o_string( my_string );
+      result =  oo.contains( 't' );
+      if ( result )
+        printf "OOP:  '%s' contains 't'.\n" ( my_string );
+      fi;
+    };
+# test_contains();
+
+
+# --
+# -- TODO:  Lists OOP
+# --
+
+
+# --
+
+
+fun split_string  ( list: List(String) ): List(String)
+    =
+    {
+      string    = list::nth( list, 0 );
+      separator = list::nth( list, 1 );
+      if (not( string =~ separator ))
+        [ string ];
+      else
+        # Do something else..
+        [ string, "foo" ];
+      fi;
+    };
+
+fun test_split_string  (): Void
+    =
+    {
+      my_string =  "*strong*";
+      separator =  ./\*/;
+      result =  split_string( [ my_string, separator ] );
+      result =  strcat( result );
+      printf "%s\n" result;
+    };
+# test_split_string();
+
+a = regex::replace_first_via_fn ./(fat).*/ .{ toupper (head #matchlist); }  "the fat father futzed";
+string = "before *strong* after.";
+a =  regex::replace_all  ./\*.*/  ""  string;
+printf "'%s'\n" a;
+
+
+
+# string = " this is a test ";
+# regexp = ./^\s*(\S.*\S)\s*$/;
+# printf "%s\n" ( regex::replace_first_via_fn ./(f.t)/ .{ toupper (head #matchlist); }  "the fat father futzed" );
+# result = regex::find_first_group 1 regexp string;
+
+#   tokens : (Char -> Bool) -> String -> List(String );
+# result = ( tokens char::is_space "the quick brown fox" );
+# apply printf "%s\n" ( result );
+
+# fun tmp  ( char: Char ): Bool
+#     =
+#     if ( char == 'e' )
+#       FALSE;
+#     else
+#       TRUE;
+#     fi;
+
+# result = ( tokens tmp "the quick brown fox" );
+# apply printf "%s\n" ( result );
+
+
+# if ( 'a' == 'a' )
+#   print "hi";
+# else
+#   print "hi2";
+# fi;
+
+
+# if ( char::contains "the quick brown fox" 'o' )
+#   print "hi";
+# else
+#   print "hi2";
+# fi;
+
+
+
+
+##
+};
+
+# Find first match of regex in text. Pass match as a list of strings to given function. Splice returned string into text in place of match:
+
+#     eval:  regex::replace_first_via_fn ./(f.t)/ .{ toupper (head #matchlist); }  "the fat father futzed";
+#     "the FAT father futzed"
