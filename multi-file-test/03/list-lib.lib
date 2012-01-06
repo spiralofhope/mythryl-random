@@ -1,0 +1,11 @@
+LIBRARY_EXPORTS
+
+        api List_Lib
+        pkg list_lib
+
+LIBRARY_COMPONENTS
+
+        $ROOT/src/lib/std/standard.lib
+
+        list-lib.api
+        list-lib.pkg

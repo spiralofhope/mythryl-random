@@ -1,0 +1,7 @@
+package example_package {
+
+  fun puts( string_to_display: String ): Void
+      =
+      printf "%s\n" string_to_display;
+
+};

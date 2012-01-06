@@ -1,0 +1,17 @@
+package list_lib: List_Lib {
+
+    # Private helper function for computing
+    # list length.  Its second argument
+    # counts the number of list elements
+    # seen so far.  This is a common MythryL idiom:
+    #
+    fun length_helper (rest_of_list, nodes_seen)
+        =
+        if (rest_of_list == [])    nodes_seen;                                              # Done, return count. 
+        else                       length_helper( tail(rest_of_list), nodes_seen + 1 );     # Count rest of list recursively.
+        fi;
+
+    fun list_length a_list
+        =
+        length_helper (a_list, 0);
+};

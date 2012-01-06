@@ -1,0 +1,8 @@
+LIBRARY_COMPONENTS
+
+        $ROOT/src/lib/std/standard.lib
+        general.pkg
+
+LIBRARY_EXPORTS
+
+        pkg general
