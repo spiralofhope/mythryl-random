@@ -1,6 +1,8 @@
 #!/usr/bin/mythryl
 
-# I got stuck with multiple arguments.
+# http://mythryl.org/my-Oop_Support.html
+
+# I got stuck on the problem of functions using multiple arguments, with split_string()
 
 {
 # --
@@ -25,9 +27,11 @@ fun test_to_string( my_int ):  Void
     {
       my_int =  10;
 
+      # The regular way.
       result =  int::to_string( my_int );
       printf "%s\n" ( result );
 
+      # The newly-available oo way.
       oo =  o_int( my_int );
       result =  oo.to_string();
       printf "OOP:  %s\n" ( result );
@@ -74,9 +78,11 @@ fun test_to_lower  (): Void
     {
       my_string =  "MAKE THIS LOWERCASE";
 
+      # The regular way.
       result =  string::to_lower( my_string );
       printf "%s\n" ( result );
-
+      
+      # The newly-available oo way.
       oo =  o_string( my_string );
       result =  oo.to_lower();
       printf "OOP:  %s\n" ( result );
@@ -89,8 +95,11 @@ fun test_length  (): Void
     {
       my_string =  "1234567890";
 
-      printf "%d\n" ( string::length( my_string ) );
+      # The regular way.
+      result = string::length( my_string );
+      printf "%d\n" ( result );
 
+      # The newly-available oo way.
       oo =  o_string( my_string );
       result =  oo.length();
       printf "OOP:  %d\n" ( result );
@@ -103,12 +112,14 @@ fun test_contains  (): Void
     {
       my_string = "this is a test";
 
+      # The regular way.
       # Notice how this has the character 't' (single-quotes)
       #    and not a string-of-length-one "t" (double-quotes)
       if ( char::contains my_string 't' )
         printf "'%s' contains 't'.\n" ( my_string );
       fi;
 
+      # The newly-available oo way.
       oo =  o_string( my_string );
       result =  oo.contains( 't' );
       if ( result )
@@ -144,9 +155,13 @@ fun test_split_string  (): Void
     {
       my_string =  "*strong*";
       separator =  ./\*/;
+
+      # The regular way.
       result =  split_string( [ my_string, separator ] );
       result =  strcat( result );
       printf "%s\n" result;
+
+      # TODO:  The newly-available oo way.
     };
 # test_split_string();
 
