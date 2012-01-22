@@ -1,0 +1,30 @@
+#!/usr/bin/mythryl
+
+# Docs:
+#   http://mythryl.org/my-Regular_expressions.html
+#   http://mythryl.org/my-Except_statements.html
+#   http://mythryl.org/my-Exceptions.html
+
+# This code is derived from:
+#   http://mythryl.org/pipermail/mythryl/2009-August/000089.html
+
+{
+
+exception RESULT( String );
+
+fun even_odd( i: Int ): Void
+    =
+    {   if (i % 2 == 0)   raise exception RESULT "Number is even\n";
+        else              raise exception RESULT "Number is odd\n";
+        fi;
+    };
+
+even_odd( 14 )   # No trailing semicolon!
+except
+    RESULT string =  print string;
+
+even_odd( 13 )   # No trailing semicolon!
+except
+    RESULT string =  print string;
+
+};
