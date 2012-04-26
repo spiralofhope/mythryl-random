@@ -3,16 +3,15 @@ _setup() {
 }
 
 _go() {
-  \geany \
+  \geany --new-instance \
     script.my \
     factor.api \
     factor.lib \
     factor.pkg \
     main.pkg \
   & local geanypid=$!
-  # To switch to that tab.
-  \sleep 2
-  \geany script.my
+  lxterminal --command=" \
+    /l/Linux/bin/sh/live/autotest.sh \"script.my\" --nodebug" &
   \wait $geanypid
 }
 
