@@ -42,6 +42,7 @@ f=${1:r}
     .main.pkg.module-dependencies-summary \
     ${f}.lib.index \
     mythryl.compile.log \
+    unknown.log \
     main.log~ \
     ` # Some sort of pid is being used here, but it's not the pid of this script when it runs, it's +1.. but I don't know if it's always +1 so I can reliably work with that. ` \
     tmp-makelib-pid-*-export.lib \

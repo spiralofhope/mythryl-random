@@ -9,7 +9,7 @@ package list_lib: List_Lib {
     # Private helper function for computing
     # list length.  Its second argument
     # counts the number of list elements
-    # seen so far.  This is a common MythryL idiom:
+    # seen so far.  This is a common Mythryl idiom:
     #
     fun length_helper (rest_of_list, nodes_seen)
         =

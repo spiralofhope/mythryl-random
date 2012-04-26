@@ -5,10 +5,11 @@ _setup() {
 _go() {
   \geany --new-instance \
     script.my \
-    factor.api \
     factor.lib \
+    factor.api \
     factor.pkg \
     main.pkg \
+    script.my \
   & local geanypid=$!
   lxterminal --command=" \
     /l/Linux/bin/sh/live/autotest.sh \"script.my\" --nodebug" &
@@ -20,8 +21,8 @@ _teardown() {
 
   for i in \
     script.my \
-    factor.api \
     factor.lib \
+    factor.api \
     factor.pkg \
     main.pkg \
     edit.sh \
