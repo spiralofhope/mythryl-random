@@ -1,8 +1,11 @@
-LIBRARY_COMPONENTS
-
-        $ROOT/src/lib/std/standard.lib
-        general.pkg
-
 LIBRARY_EXPORTS
 
-        pkg general
+  api General
+  pkg general
+
+LIBRARY_COMPONENTS
+
+  $ROOT/src/lib/std/standard.lib
+
+  general.api
+  general.pkg

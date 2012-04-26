@@ -1,7 +1,9 @@
 #!/usr/bin/mythryl
-makelib::make "testing.lib";
+
+# makelib::make "testing.lib";
+load "testing.lib";
+
 {
-string_to_display = "Hello, World!";
-printf "%s\n" string_to_display;
-# example_package::puts( "Hello, World!" );
+  printf "Hello, ";
+  general::puts( "World!\n" );
 };
