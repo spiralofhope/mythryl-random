@@ -1,0 +1,13 @@
+#!/usr/bin/mythryl
+
+load "factor.lib";
+
+{
+  print "\n--v\n";
+
+  fun print_int i = printf "%d " i;
+  factors = factor::factors(24);
+  apply print_int factors;
+
+  print "\n--^\n";
+};
